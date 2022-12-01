@@ -19,3 +19,5 @@ let age = '23 nastai.'
 let job = 'Minii mergejil software engineer.'
 console.log(lastName.concat(' ',firstName,country,city,' ',age,job))
 6. // 
+const nums = '12345\n23451\n34512\n45123\n51234'
+console.log(nums)
