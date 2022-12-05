@@ -47,4 +47,25 @@ console.log(a)
     }
     
 }
-
+// 1. // challenge
+// let count = 0
+// for(let i = 10; i <= 60; i ++){
+//     if(i % 3 == 0 && i % 4 == 0){
+//         count ++
+//     }
+// }
+// console.log(count)
+2. // challenge 1-15 tegsh toonii niilber sonfgoi toonii urjver 
+let niilber = 0
+let urjver = 1
+for(let i = 1; i <= 15; i ++){
+    if(i % 2 == 0){
+        niilber = niilber + i 
+    }
+    if(i % 2 !== 0){
+        urjver = urjver * i 
+    }
+}
+console.log(niilber)
+console.log(urjver)
+    

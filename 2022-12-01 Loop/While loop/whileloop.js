@@ -43,4 +43,14 @@ console.log(d)
 6.
 console.log('Ogogdson too anhny too mon esehiig shalgana')
 let i = Number(prompt('Anhny too mon esehiig shalgamaar baigaa toogoo bichne uu'))
- 
+let count = 0
+for(n = 0; n <= i; n ++){
+ if(i % n == 0){
+    count ++
+ }
+}
+ if(count == 2){
+        console.log(i + ' anhnii too mon yum') 
+}else{
+    console.log('anhnii too bish')
+}
