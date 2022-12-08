@@ -1,0 +1,1 @@
+let i = prompt(' Fibonacci oloh gishuunee oloh')
