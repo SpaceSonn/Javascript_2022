@@ -14,6 +14,14 @@ for(let j = 0; j < itCompanies.length; j ++){
     console.log(itCompanies[j])
 }
 5.
+console.log('endees tom usgeer')
 for(let x = 0; x < itCompanies.length; x ++){
-
+    console.log(itCompanies[x].toUpperCase())
 }
+6.
+let a = ''
+    for( let y = 0; y < itCompanies.length; y ++){
+    a += itCompanies[y]
+    a += ' '
+}
+console.log(a + ' зэрэг мэдээллийн технологийн томоохон компаниуд.')
