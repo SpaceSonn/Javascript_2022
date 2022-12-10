@@ -6,10 +6,10 @@
   {type: "frog", sound: " croak"}, 
   {type: "duck", sound: "quack"}, 
   {type: "seal", sound: "ow ow ow"}] 
-  
+
   function output(type, sound){
     for(let i = 0; i < animals.length; i ++){
     }
-    return `What does the ${type} say? "${sound}!"`
-    }
-    console.log(output[i])
+    return `What does the ${type[i]} say? "${sound[i]}!"`
+  }
+  console.log(output[i]) 
