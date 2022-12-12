@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="hello">Hello World</div>
+    <ul class="dummy">
+        <li>Argentina</li>
+        <li>Portugal</li>
+        <li>Brazil</li>
+    </ul>
+
+
+    <script>
+        let divEl = document.getElementById('hello');
+        divEl.style.color = 'orange';
+        divEl.style.fontSize = '50px'
+        divEl.style.textAlign = 'center'
+        // let dummyElements = document.getElementsByClassName('dummy')
+        // dummyElements[0].style.color = 'yellow';
+        let dummyEl = document.querySelectorAll('ul li');
+        dummyEl[0].style.color = 'Aqua';
+        dummyEl[1].style.color = 'red'
+        dummyEl[2].style.color = 'green' 
+    </script>
+</body>
+</html>
