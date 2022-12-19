@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn"><span id="text">Random Color Generator</span></button>
+    
+    
+    <script> 
+        let button = document.getElementById('btn')
+        let text = document.getElementById('text')
+        let a, b, c;
+        function color() {
+            a = Math.floor(Math.random() * 256)
+            b = Math.floor(Math.random() * 256)
+            c = Math.floor(Math.random() * 256)
+            document.body.style.backgroundColor = "rgb(" + a + "," + b + "," + c +")";
+            text.style.color = "rgb(" + b + "," + a + "," + c +")";
+        }
+        button.addEventListener("click", color)
+
+    </script>
+</body>
+</html>
