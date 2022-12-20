@@ -6,28 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
     </head>
-    <body style="background-color: beige;">
-        <button id="myBtn">Click to set background color</button>
-        <div onclick="changeBackgroundColor" style="width: 300px; height:30px; margin-top: 30px; background-color: white;"></div>
-        <div onclick="changeBackgroundColor" style="width: 300px; height:30px; margin-top: 30px; background-color: white;"></div>
+    <body>
+        <button id="myBtn">Click to set paragraph background color</button>
+        <p id="top">Click to Set background color</p>
+        <p id="bot">Click to Change another color</p>
         <script>
-            let myButton = document.getElementById("myBtn");
-                function changeBackgroundColor () {
-                    for(i = 1; i <= 3; i ++){
-                        if(i == 1){
-                            myButton.style.backgroundColor = 'white'
-                        }
-                        if(i == 2){
-                            myButton.style.backgroundColor = 'red'
-                            myButton.addEventListener("click",changeBackgroundColor());
-                        }
-                        if(i == 3){
-                            myButton.style.backgroundColor = 'yellow'
-                            myButton.addEventListener("click",changeBackgroundColor());
-                        }
-                    }
-                }
-          
+            let myButton = document.getElementById('myBtn');
+            let top = document.getElementsById('top');
+            let bot = document.getElementsById('bot');
+            let a, b, c;
+               function changeColor() {
+                a = Math.floor(Math.random() * 256)
+                b = Math.floor(Math.random() * 256)
+                c = Math.floor(Math.random() * 256)
+                document.p.style.backgroundColor = "rgb(" + a + "," + b + "," + c +")";
+               }
+               myButton.addEventListener("click", changeColor)
         </script>
     </body>
 </html>   
