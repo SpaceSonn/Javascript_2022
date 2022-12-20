@@ -54,3 +54,6 @@ for(n = 0; n <= i; n ++){
 }else{
     console.log('anhnii too bish')
 }
+7. 
+
+
