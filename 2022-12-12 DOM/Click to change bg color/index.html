@@ -7,21 +7,26 @@
         <title>Document</title>
     </head>
     <body>
-        <button id="myBtn">Click to set paragraph background color</button>
-        <p id="top">Click to Set background color</p>
-        <p id="bot">Click to Change another color</p>
+        <button id="btn">Click to set paragraph background color</button>
+        <p id="topParagraph">Click to Set background color</p>
+        <p id="botParagraph">Click to Change another color</p>
+        
+        
+        
+        
         <script>
-            let myButton = document.getElementById('myBtn');
-            let top = document.getElementsById('top');
-            let bot = document.getElementsById('bot');
+            console.log('hello world')
+            let Button = document.getElementById('btn');
+            let top = document.getElementById('topParagraph');
+            let bot = document.getElementById('botParagraph');
             let a, b, c;
-               function changeColor() {
+            function changeColor() {
                 a = Math.floor(Math.random() * 256)
                 b = Math.floor(Math.random() * 256)
                 c = Math.floor(Math.random() * 256)
-                document.p.style.backgroundColor = "rgb(" + a + "," + b + "," + c +")";
-               }
-               myButton.addEventListener("click", changeColor)
+                top.style.backgroundColor = "rgb(" + a + "," + b + "," + c +")";
+            }
+            Button.addEventListener("click", changeColor)
         </script>
     </body>
 </html>   
