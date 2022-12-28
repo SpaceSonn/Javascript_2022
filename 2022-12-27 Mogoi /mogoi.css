@@ -1,0 +1,14 @@
+#area {
+    position: relative;
+    background-color: aqua;
+}
+.body {
+    position: absolute;
+    border-radius: 30%;
+    background-color: blueviolet;
+}
+.food {
+    position: absolute;
+    background-color: deeppink;
+    border-radius: 50%;
+}
