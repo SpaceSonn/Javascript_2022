@@ -1,175 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link rel="stylesheet" href="mogoi.css " />
+		<script>
+			const scale = 40;
+			const areaWidth = 20;
+			const areaHeight = 20;
+			const speed = 300;
+			let initialPositions = [
+				{ x: 1, y: 1, },
+				{ x: 2, y: 1, },
+				{ x: 3, y: 1, },
+			];	
+			const initialDirection = 'left'
+		</script>
+	</head>
+	<body>
+		<div id="area"></div>
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<style rel="stylesheet" href="./mogoi.css"></style>
-	<script>
-		const scale = 30;
-		const areaWidth = 20
-		const areaHeight = 15;
-		const speed = 300;
-	</script>
-</head>
+		<button onclick="changeDirection('up')">up</button>
+		<button onclick="changeDirection('down')">down</button>
+		<button onclick="changeDirection('right')">right</button>
+		<button onclick="changeDirection('left')">left</button>
 
-<body>
-	<div id="area"></div>
+		<script>
+			const area = document.getElementById('area');
+			area.style.width = `${areaWidth * scale}px`;
+			area.style.height = `${areaHeight * scale}px`;
 
-	<button onclick="changeDirection('up')">up</button>
-	<button onclick="changeDirection('down')">down</button>
-	<button onclick="changeDirection('right')">right</button>
-	<button onclick="changeDirection('left')">left</button>
+			let direction = initialDirection;
 
-	<script>
-		const area = document.getElementById('area');
-		area.style.width = `${areaWidth * scale}px`;
-		area.style.width = `${areaHeight * scale}px`;
+			let positions = initialPositions;
 
-		let direction = 'right';
+			let food;
+			generateFood();
 
-		let food;
-		generateFood();
 
-		let positions = [
-			{ x: 1, y: 1, },
-			{ x: 2, y: 1, },
-			{ x: 3, y: 1, },
-		];
-
-		document.addEventListener('keyup', (event) => {
-			switch (event.key) {
-				case 'ArrowDown':
-					changeDirection('down');
-					break;
-				case 'ArrowUp':
-					changeDirection('up');
-					break;
-				case 'ArrowLeft':
-					changeDirection('left')
-					break;
-				case 'ArrowRight':
-					changeDirection('right')
-					break;
-			}
-		})
-
-		function changeDirection(value) {
-			if (direction === 'up' || direction === 'down') {
-				if (value === 'right' || value === 'left') {
-					direction = value
+			document.addEventListener('keyup', (event) => {
+				switch (event.key) {
+					case 'ArrowDown':
+						changeDirection('down');
+						break;
+					case 'ArrowUp':
+						changeDirection('up');
+						break;
+					case 'ArrowLeft':
+						changeDirection('left')
+						break;
+					case 'ArrowRight':
+						changeDirection('right')
+						break;
 				}
-			} else if (direction === 'right' || direction === 'left') {
-				if (value === 'up' || value === 'down') {
-					direction = value;
+			});
+
+			function changeDirection(value) {
+				if (direction === 'up' || direction === 'down') {
+					if (value === 'right' || value === 'left') {
+						direction = value
+					}
+				} else if (direction === 'right' || direction === 'left') {
+					if (value === 'up' || value === 'down') {
+						direction = value;
+					}
 				}
 			}
-		}
 
-		function generateFood() {
-			food = {
-				x: Math.floor(Math.random() * areaWidth),
-				y: Math.floor(Math.random() * areaHeight),
-			};
-		}
-
-		function goLeft() {
-			const newPositions = [];
-
-			newPositions.push({
-				y: positions[0].y,
-				x: positions[0].x === 0 ? areaWidth - 1 : positions[0].x - 1,
-			});
-			for (let i = 0; i < positions.length - 1; i++) {
-				newPositions.push(positions[i]);
+			function generateFood() {
+				food = {
+					x: Math.floor(Math.random() * areaWidth),
+					y: Math.floor(Math.random() * areaHeight),
+				};       
+			
+				let hoolDavhardsan = false;
+				for (let i = 0; i < positions.length; i++)	{
+					if (positions[i].x === food.x && positions[i].y === food.y) {
+						hoolDavhardsan = true;
+						break;
+					}
+				}
+				
+				if (hoolDavhardsan) {
+					generateFood();
+				}
 			}
-			positions = newPositions;
-		}
+				
 
-		function goRight() {
-			const newPositions = [];
+			function goLeft() {
+				const newPositions = [];
 
-			newPositions.push({
-				y: positions[0].y,
-				x: positions[0].x === areaWidth - 1 ? 0 : positions[0].x + 1,
-			});
-			for (let i = 0; i < positions.length - 1; i++) {
-				newPositions.push(positions[i]);
-			}
-			positions = newPositions
-		}
+				newPositions.push({
+					y: positions[0].y,
+					x: positions[0].x === 0 ? areaWidth - 1 : positions[0].x - 1,
+				});
 
-		function goUp() {
-			const newPositions = [];
+				for (let i = 0; i < positions.length - 1; i++) {
+					newPositions.push(positions[i]);
+				}
 
-			newPositions.push({
-				x: positions[0].x,
-				y: positions[0].y === 0 ? areaHeight - 1 : positions[0].y - 1,
-			});
-			for (let i = 0; i < positions.length - 1; i++) {
-				newPositions.push(positions[i]);
-			}
-			positions = newPositions
-		}
-
-		function goDown() {
-			const newPositions = [];
-
-			newPositions.push({
-				x: positions[0].x,
-				y: positions[0].y === areaHeight - 1 ? 0 : positions[0].y + 1,
-			});
-			for (let i = 0; i < positions.length - 1; i++) {
-				newPositions.push(positions[i]);
-			}
-			positions = newPositions
-		}
-
-		setInterval(() => {
-			switch (direction) {
-				case 'right':
-					goRight();
-					break;
-				case 'left':
-					goLeft();
-					break;
-				case 'up':
-					goUp();
-					break;
-				case 'down':
-					doDown();
-					break;
+				positions = newPositions;
 			}
 
-			// mogoinii biynii html
-			const snakeBodyHtml = positions
-				.map((positions) => `<div class=body style="width: ${scale}px; height: ${scale}px; top: ${positions.y * scale}px; left: ${positions.x * scale}px;"></div>`)
-				.join('');
-			// hoolnii html 
-			const foodHtml = `<div class="food" style="width: ${scale}px; top: ${food.y * scale}px; left: ${food.x * scale}px;"></div>`
+			function goRight() {
+				const newPositions = [];
 
-			//talbar deer html zurj bn 
-			area.innerHTML = foodHtml + snakeBodyHtml;
+				newPositions.push({
+					y: positions[0].y,
+					x: positions[0].x === areaWidth - 1 ? 0 : positions[0].x + 1,
+				});
 
-			//mogoi hool idsen esehiig shalgana 
-			const head = positions[0];
-			if (food.x === head.x && food.y === head.y) {
-				positions.puish({});
+				for (let i = 0; i < positions.length - 1; i++) {
+					newPositions.push(positions[i]);
+				}
+
+				positions = newPositions
+			}
+
+			function goUp() {
+				const newPositions = [];
+
+				newPositions.push({
+					x: positions[0].x,
+					y: positions[0].y === 0 ? areaHeight - 1 : positions[0].y - 1,
+				});
+
+				for (let i = 0; i < positions.length - 1; i++) {
+					newPositions.push(positions[i]);
+				}
+
+				positions = newPositions
+			}
+
+			function goDown() {
+				const newPositions = [];
+
+				newPositions.push({
+					x: positions[0].x,
+					y: positions[0].y === areaHeight - 1 ? 0 : positions[0].y + 1,
+				});
+
+				for (let i = 0; i < positions.length - 1; i++) {
+					newPositions.push(positions[i]);
+				}
+
+				positions = newPositions;
+			}
+
+			function resetGame() {
+				positions = initialPositions;
+				direction = initialDirection;
 				generateFood();
 			}
-		}, speed);
 
+			setInterval(() => {
+				switch (direction) {
+					case 'right':
+						goRight();
+						break;
+					case 'left':
+						goLeft();
+						break;
+					case 'up':
+						goUp();
+						break;
+					case 'down':
+						doDown();
+						break;
+				}
 
+				// mogoinii biynii html
+				const snakeBodyHtml = positions
+					.map((position) => `<div class="body" style="width: ${scale}px; height: ${scale}px; top: ${positions.y * scale}px; left: ${positions.x * scale}px;"></div>`)
+					.join('');
+				// hoolnii html 
+				const foodHtml = `<div class="food" style="width: ${scale}px; heoght: ${scale}px; top: ${food.y * scale}px; left: ${food.x * scale}px;"></div>`
 
+				//talbar deer html zurj bn 
+				area.innerHTML = foodHtml + snakeBodyHtml;
 
-
-
-
-
-
-	</script>
-</body>
+				//mogoi hool idsen esehiig shalgana 
+				const head = positions[0];
+				if (food.x === head.x && food.y === head.y) {
+					positions.push({});
+					generateFood();
+				}
+				//mogoi uheh 
+				for ( let i = 1; i < positions.lenght; i++) {
+					if (head.x === positions[i].x && head.y === positions[i].y) {
+						alert('Game over');
+						resetGame();
+						break;
+					}
+				}
+			}, speed);
+		</script>
+	</body>
 
 </html>
